@@ -218,7 +218,9 @@ print_log "Setting up documentation for Download and Preview\n"
 mv ${BUILD_DIR}/_build/html ${ROOT_DIR}/../${UNIQUEID}_preview && cd $_
 
 for ((i=0;i<${#SUBPROJECT_URLS_ARRAY[@]};i++)); do
-  ln -s ${SUBPROJECT_DIRS_ARRAY[i]} ${SUBPROJECT_DIRS_ARRAY[i]}/${SUBPROJECT_DOCPATHS_ARRAY[$i]}/index.html
+  cd ${SUBPROJECT_DIRS_ARRAY[i]}
+  ln -s ${SUBPROJECT_DOCPATHS_ARRAY[$i]}/index.html
+  cd ..
 done
 
 cd ..
